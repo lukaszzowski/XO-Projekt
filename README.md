@@ -6,7 +6,7 @@ using namespace std;
 
 void show_board();
 void player_move();
-bool gameover();
+bool check_winner();
 
 char turn;
 bool draw = false;
@@ -18,10 +18,10 @@ int main() {
   cout << "#Gracz 2  O\n";
   turn = 'X';
 
-  while (!gameover()) {
+  while (!check_winner()) {
     show_board();
     player_move();
-    gameover();
+    check_winner();
   }
 
   if (turn == 'O' && !draw) {
@@ -29,7 +29,7 @@ int main() {
     cout << endl << endl << "Gracz 1 [X] wygrywa! Koniec gry!\n";
   } else if (turn == 'X' && !draw) {
     show_board();
-    cout << endl << endl << "Gracz 1 [X] wygrywa! Koniec gry!\n";
+    cout << endl << endl << "Gracz 2 [O] wygrywa! Koniec gry!\n";
   } else {
     show_board();
     cout << endl << endl << "Remis! Koniec gry!\n";
@@ -117,8 +117,9 @@ void player_move() {
   }
 }
 
-bool gameover() {
-  for (int i = 0; i < 3; i++)  // sprawdzanie wygranej
+// sprawdzanie wygranej
+bool check_winner() {
+  for (int i = 0; i < 3; i++)
   {
     if ((board[i][0] == board[i][1] && board[i][1] == board[i][2]) ||
         (board[0][i] == board[1][i] && board[1][i] == board[2][i]) ||
@@ -128,7 +129,8 @@ bool gameover() {
     }
   }
 
-  for (int i = 0; i < 3; i++)  // sprawdzanie remisu
+// sprawdzanie remisu
+  for (int i = 0; i < 3; i++)
   {
     for (int j = 0; j < 3; j++) {
       if (board[i][j] != 'X' && board[i][j] != 'O') {

@@ -1,32 +1,47 @@
 #include "game.h"
 
+
 void game::show_board() {
-  std::cout << std::endl << "     |     |    " << std::endl;
-  std::cout << "  " << board[0][0] << "  |  " << board[0][1] << "  |  "
-       << board[0][2] << std::endl;
-  std::cout << "_____|_____|____" << std::endl;
-  std::cout << "     |     |    " << std::endl;
-  std::cout << "  " << board[1][0] << "  |  " << board[1][1] << "  |  "
-       << board[1][2] << std::endl;
-  std::cout << "_____|_____|____" << std::endl;
-  std::cout << "     |     |    " << std::endl;
-  std::cout << "  " << board[2][0] << "  |  " << board[2][1] << "  |  "
+  cout << endl << "     |     |    " << endl;
+  cout << "  " << board[0][0] << "  |  " << board[0][1] << "  |  "
+       << board[0][2] << endl;
+  cout << "_____|_____|____" << endl;
+  cout << "     |     |    " << endl;
+  cout << "  " << board[1][0] << "  |  " << board[1][1] << "  |  "
+       << board[1][2] << endl;
+  cout << "_____|_____|____" << endl;
+  cout << "     |     |    " << endl;
+  cout << "  " << board[2][0] << "  |  " << board[2][1] << "  |  "
        << board[2][2] << std::endl;
-  std::cout << "     |     |    " << std::endl << std::endl;
+  cout << "     |     |    " << endl << endl;
+}
+
+
+int choice() {
+    int i = 0;
+    do {
+        char buffer[256];
+        fgets(buffer, 256, stdin);
+        i = atoi(buffer);
+
+        if (i < 1 || i > 9) {
+            cout << "Wprowadziles nieodpowiednia wartosc! Sprobuj jeszcze raz\n";
+        }
+    } while (i < 1 || i > 9);
+    return i;
 }
 
 void player::player_move() {
-  int choice;
+
   int row = 0, column = 0;
 
-  if (turn == 'X') {                            //w tym miejscu przestaje poprawnie dzialac kod, nie rysuje planszy
-    std::cout << "ruch Gracza 1 [X]: ";
+    if (turn == 'X') {
+    cout << "ruch Gracza 1 [X]: ";
   } else if (turn == 'O') {
-    std::cout << "ruch Gracza 2 [O]: ";
+    cout << "ruch Gracza 2 [O]: ";
   }
-  std::cin >> choice;
 
-  switch (choice) {
+  switch (choice()) {
     case 1:
       row = 0;
       column = 0;
@@ -63,10 +78,9 @@ void player::player_move() {
       row = 2;
       column = 2;
       break;
-    default:
-      std::cout << "Wprowadziles nieodpowiednia wartosc! Sprobuj jeszcze raz\n";
-      player_move();
+
   }
+
 
   if (turn == 'X' && board[row][column] != 'X' && board[row][column] != 'O') {
     board[row][column] = 'X';
@@ -76,13 +90,12 @@ void player::player_move() {
     board[row][column] = 'O';
     turn = 'X';
   } else {
-    std::cout << "Pole, ktore wybrales jest juz zajete! Sprobuj jeszcze raz\n";
+    cout << "Pole, ktore wybrales jest juz zajete! Sprobuj jeszcze raz\n";
     player_move();
   }
+
 }
 
-
-// sprawdzanie wygranej
 bool game::check_winner() {
   for (int i = 0; i < 3; i++)
   {
@@ -94,7 +107,7 @@ bool game::check_winner() {
     }
   }
 
-// sprawdzanie remisu
+
   for (int i = 0; i < 3; i++)
   {
     for (int j = 0; j < 3; j++) {

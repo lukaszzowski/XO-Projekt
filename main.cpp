@@ -1,28 +1,24 @@
-// Gra Kolko i Krzyzyk dla 2 graczy
-#include <iostream>
 #include "game.h"
 
-using namespace std;
-
 int main() {
-    game mygame;                                //wskazanie objektu klasy
-    player myplayer;                            //wskazanie objektu klasy
+    game mygame;
+    player myplayer;
   cout << "#Zagrajmy w Kolko i Krzyzyk\n";
   cout << "#Gracz 1  X\n";
   cout << "#Gracz 2  O\n";
     myplayer.turn = 'X';
 
 
-  while (!mygame.check_winner()) {
-    mygame.show_board();
+  while (!myplayer.check_winner()) {
+    myplayer.show_board();
     myplayer.player_move();
     mygame.check_winner();
   }
 
-  if (myplayer.turn == 'O' && !mygame.draw) {
+  if (myplayer.turn == 'O' && !myplayer.draw) {
     mygame.show_board();
     cout << endl << endl << "Gracz 1 [X] wygrywa! Koniec gry!\n";
-  } else if (myplayer.turn == 'X' && !mygame.draw) {
+  } else if (myplayer.turn == 'X' && !myplayer.draw) {
     mygame.show_board();
     cout << endl << endl << "Gracz 2 [O] wygrywa! Koniec gry!\n";
   } else {

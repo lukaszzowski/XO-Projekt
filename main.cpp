@@ -1,13 +1,12 @@
 #include "game.h"
 
 int main() {
-    game mygame;
-    player myplayer;
+  game mygame;
+  player myplayer;
   cout << "#Zagrajmy w Kolko i Krzyzyk\n";
   cout << "#Gracz 1  X\n";
   cout << "#Gracz 2  O\n";
-    myplayer.turn = 'X';
-
+  myplayer.turn = 'X';
 
   while (!myplayer.check_winner()) {
     myplayer.show_board();
@@ -25,5 +24,4 @@ int main() {
     mygame.show_board();
     cout << endl << endl << "Remis! Koniec gry!\n";
   }
-
 }

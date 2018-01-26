@@ -1,7 +1,7 @@
 #include <gtest/gtest.h>
 #include "game.h"
 
-
+//TEST functions
 TEST(check_winner, its_false){
 	game mygame;
 	char board[3][3] = {{'X', 'O', 'X'}, 

@@ -36,6 +36,6 @@ class player2 : public player
 {
 
 };
-
+//end
 
 #endif // GAME_H

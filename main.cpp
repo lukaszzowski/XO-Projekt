@@ -26,4 +26,5 @@ int main() {
     cout << endl << endl << "Remis! Koniec gry!\n";
   }
 
+  return 0;
 }

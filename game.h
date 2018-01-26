@@ -11,7 +11,6 @@ class game
 {
     public:
         void show_board();
-        //int choice();
         void player_move();
         bool check_winner();
         char turn;

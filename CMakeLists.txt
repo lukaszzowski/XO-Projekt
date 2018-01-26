@@ -10,3 +10,4 @@ include_directories(${GTEST_INCLUDE_DIRS})
 add_executable(runTest main_test.cpp game.cpp)
 target_link_libraries(runTest gtest gtest_main pthread)
 add_test(runTest runTest)
+#END

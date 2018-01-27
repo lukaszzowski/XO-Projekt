@@ -18,12 +18,15 @@ int main() {
   if (myplayer.turn == 'O' && !myplayer.draw) {
     mygame.show_board();
     cout << endl << endl << "Gracz 1 [X] wygrywa! Koniec gry!\n";
+    myplayer.replay();
   } else if (myplayer.turn == 'X' && !myplayer.draw) {
     mygame.show_board();
     cout << endl << endl << "Gracz 2 [O] wygrywa! Koniec gry!\n";
+    myplayer.replay();
   } else {
     mygame.show_board();
     cout << endl << endl << "Remis! Koniec gry!\n";
+    myplayer.replay();
   }
 
   return 0;

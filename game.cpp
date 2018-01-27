@@ -119,3 +119,26 @@ bool game::check_winner() {
   draw = true;
   return true;
 }
+
+int game::replay()
+{
+  while (check_winner()) {
+    cout << "\nChcesz zagrac jeszcze raz? (t / n)?";
+    char answer;
+    cin >> answer;
+    if (tolower(answer) == 't') {
+        cin.clear();
+        cin.ignore(10000,'\n');
+        cout << "\nNOWA GRA\n";
+        main();
+    }
+    if (tolower(answer) == 'n') {
+        return(0);
+    }
+    else {
+        cout << "Nierozpoznany wybor! Zdecyduj ponownie.\n";
+    }
+
+  }
+  return 0;
+}
